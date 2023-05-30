@@ -1,13 +1,16 @@
-#include <iostream>
 #include "BankAccount.h"
+
+#include "SavingsAccount.h"
+
 using namespace std;
 int main() {
-    int val = 0;
-    BankAccount b(1233,234);
-    b.displayAccountInfo();
-    b.deposit(999999992399);
     
-    b.displayAccountInfo();
-    //test.isAccountNumberUnique(3);
+    SavingsAccount cont(3141,3241,99);
+    cont.displayAccountInfo();
+    cont.deposit(8999);
+    cont.displayAccountInfo();
+    cout<<cont.withdraw(999);
+    cont.displayAccountInfo();
+    
     return 0;
 }

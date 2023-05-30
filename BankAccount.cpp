@@ -4,6 +4,9 @@
 #include "BankAccount.h"
 
 using namespace  std;
+
+const float BankAccount::MAX_BALANCE = 10000000000;
+
 bool BankAccount::isAccountNumberUnique(int id) const{
     ifstream file;
     int aux = 0;
@@ -39,17 +42,20 @@ BankAccount::BankAccount(int account_number, float balance) {
     {
         if (balance < 0)
             throw std::invalid_argument("ERROR: NEGATIVE BALANCE");
+
         if (typeid(account_number).name() != string("i"))
             throw std::invalid_argument("ERROR: account_number MUST BE OF TYPE INT");
+
         if (account_number < 1000 || account_number > 9999)
             throw std::invalid_argument("ERROR: account_number MUST HAVE 4 DIGITS \n");
+
         if ( this->isAccountNumberUnique(account_number) == false)
             throw std::invalid_argument("ERROR: account_number IS IN USE");
         
-
         this->balance = balance;
         this->account_number = account_number;
     // TODO: must add the account to info.txt
+
     }
     catch(const std::exception& e)
     {
@@ -72,13 +78,11 @@ void BankAccount::deposit(float money){
             throw std::overflow_error("ERROR: Balance exceeds balance maximum \n");
         }
         this->balance += money;
-        //return true;
     }
     catch(const std::exception& e){
         std::cerr << e.what() << '\n';
         throw;
     }
-   //return false;
 }
 bool BankAccount::withdraw(float money){
     if(this->balance >= money){

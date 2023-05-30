@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -std=c++17
 
-SRCS = main.cpp BankAccount.cpp
+SRCS = main.cpp BankAccount.cpp SavingsAccount.cpp
 OBJS = $(SRCS:.cpp=.o)
 TARGET = bank_account_management_system
 
